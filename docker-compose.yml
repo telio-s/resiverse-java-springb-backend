@@ -1,0 +1,11 @@
+version: "3"
+services:
+  residence-bck:
+    build: .
+    ports:
+      - "8002:8002"
+    networks:
+      - nginx_network
+networks:
+  nginx_network:
+    external: true
