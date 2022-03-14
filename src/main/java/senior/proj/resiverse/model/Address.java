@@ -9,9 +9,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 @AllArgsConstructor
 public class Address {
-    private String houseNo;
-    private String subDistrict;
-    private String district;
-    private String province;
-    private String postNum;
+    private String addrHouseNo;
+    private String addrSubDistrict;
+    private String addrDistrict;
+    private String addrProvince;
+    private String addrPostNum;
 }
