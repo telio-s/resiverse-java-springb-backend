@@ -17,4 +17,8 @@ public class Residence {
     private ResidenceType residenceType;
     private String floor;
     private List<Facility> facilities;
+    private List<Room> room;
+    private String description;
+    private String website;
+    private String line;
 }
