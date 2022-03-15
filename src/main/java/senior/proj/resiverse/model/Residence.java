@@ -11,6 +11,8 @@ import java.util.List;
 @Document
 @AllArgsConstructor
 public class Residence {
+    @Id
+    private String id;
     private String name;
     private String phone;
     private Address address;
@@ -21,4 +23,6 @@ public class Residence {
     private String description;
     private String website;
     private String line;
+    private List<String> imagesURL;
+    private String imageURL;
 }

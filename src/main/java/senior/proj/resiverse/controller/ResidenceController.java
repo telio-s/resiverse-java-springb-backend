@@ -1,12 +1,11 @@
 package senior.proj.resiverse.controller;
 
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import senior.proj.resiverse.model.Residence;
 import senior.proj.resiverse.services.ResidenceService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/residence")
@@ -23,4 +22,25 @@ public class ResidenceController {
         }
         return "Success";
     }
+
+    @GetMapping("/all")
+    public List<Residence> getAllResidence() {
+        return residenceService.getAllResidence();
+    }
+
+    @GetMapping("/{id}")
+    public Residence getResidence(@PathVariable(value = "id") String id) {
+        return residenceService.getResidenceById(id);
+    }
+    
+    @PutMapping("/{id}")
+    public String updateResidence(@PathVariable(value = "id") String id,@RequestBody Residence residence){
+        try {
+            residenceService.updateResidence(id, residence);
+        }catch (IllegalStateException illegalStateException) {
+            return illegalStateException.getMessage();
+        }
+        return "Update successfully";
+    }
+
 }
