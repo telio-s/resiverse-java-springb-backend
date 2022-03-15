@@ -23,4 +23,6 @@ public class Residence {
     private String description;
     private String website;
     private String line;
+    private List<String> imagesURL;
+    private String imageURL;
 }

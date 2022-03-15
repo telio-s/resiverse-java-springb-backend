@@ -9,6 +9,7 @@ import senior.proj.resiverse.Repository.ResidenceRepository;
 import senior.proj.resiverse.model.Residence;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -41,6 +42,23 @@ public class ResidenceService {
             repository.insert(residence);
         }else {
             throw new IllegalStateException(residence.getName() + " already exists.");
+        }
+    }
+
+    public void updateResidence(String id,Residence residence){
+        Optional<Residence> residenceDB = repository.findById(id);
+        if(residenceDB.isPresent()){
+            residence.setName(residence.getName() == null ? residenceDB.get().getName() : residence.getName());
+            residence.setPhone(residence.getPhone() == null ? residenceDB.get().getPhone() : residence.getPhone());
+            residence.setResidenceType(residence.getResidenceType() == null ? residenceDB.get().getResidenceType() : residence.getResidenceType());
+            residence.setFloor(residence.getFloor() == null ? residenceDB.get().getFloor() : residence.getFloor());
+            residence.setDescription(residence.getDescription() == null ? residenceDB.get().getDescription() : residence.getDescription());
+            residence.setLine(residence.getLine() == null ? residenceDB.get().getLine() : residence.getLine());
+            residence.setImageURL(residence.getImageURL() == null ? residenceDB.get().getImageURL() : residence.getImageURL());
+            residence.setImagesURL(residence.getImagesURL() == null ? residenceDB.get().getImagesURL() : residence.getImagesURL());
+        }
+        else {
+            throw new IllegalStateException("Residence not found.");
         }
     }
 

@@ -32,5 +32,15 @@ public class ResidenceController {
     public Residence getResidence(@PathVariable(value = "id") String id) {
         return residenceService.getResidenceById(id);
     }
+    
+    @PutMapping("/{id}")
+    public String updateResidence(@PathVariable(value = "id") String id,@RequestBody Residence residence){
+        try {
+            residenceService.updateResidence(id, residence);
+        }catch (IllegalStateException illegalStateException) {
+            return illegalStateException.getMessage();
+        }
+        return "Update successfully";
+    }
 
 }
