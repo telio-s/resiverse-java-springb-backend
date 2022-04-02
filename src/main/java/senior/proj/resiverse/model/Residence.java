@@ -25,4 +25,5 @@ public class Residence {
     private String line;
     private List<String> imagesURL;
     private String imageURL;
+    private Geometry geometry;
 }
